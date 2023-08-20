@@ -17,3 +17,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser. 
 
+
+# Challenges
+ 
+ 1.The API was hard to learn and the router paths and which api was giving which response.
+ 2.The challenging thing was the infinite scroll it took more time for that.
+
+ # Improvements
+
+ 1.Optimizing the code as the time was less. I did it less optimized way.
+ 2.if four more hours would be given i would add test cases
+  
+
