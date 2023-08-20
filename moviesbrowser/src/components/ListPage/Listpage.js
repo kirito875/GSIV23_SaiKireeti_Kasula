@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { CONSTANTS } from '../utils/constants';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { movieDetails, searchList } from '../store/store';
+import { movieDetails } from '../store/store';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -70,7 +70,6 @@ function Listpage(){
    const [page, setPage] = useState(1);
    const [isLoading, setIsLoading] = useState(false);
    const searchResult = useSelector(state=>state.search.searchResults);
-   const details=useSelector(state=>state.details.details);
    const navigate=useNavigate();
    const dispatch=useDispatch();
 
@@ -129,10 +128,10 @@ function Listpage(){
     return(<div className='movie-view'>
      
      <GridList spacing={0}>
-      {movieList?.map((value)=>(<Customcard movietitle={value.original_title} movieDescription={value.overview} movieRating={value.vote_average} movieImagePath={value.poster_path} handleMovieClick={()=>{handleMovieClick(value)}}/>))}
+      {movieList?.map((value)=>(<Customcard movietitle={value.original_title} movieDescription={value.overview} movieRating={value.vote_average} movieImagePath={value.poster_path} handleMovieClick={()=>{handleMovieClick(value.id)}}/>))}
       </GridList>
       {isLoading && <p>Loading...</p>}
-      
+      {error && <p>{error}</p>}
     </div>)
 }
 

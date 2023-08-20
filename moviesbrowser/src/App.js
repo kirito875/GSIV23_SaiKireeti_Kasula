@@ -1,5 +1,5 @@
-import {  Route, Routes,Navigate,useLocation } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import {  Route, Routes,Navigate,useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { searchList } from "./components/store/store";
 import { CONSTANTS } from "./components/utils/constants";
 import Detailspage from "./components/DetailsPage/Detailspage";
@@ -63,6 +63,8 @@ const useStyles = makeStyles((theme) => ({
 
  
 }));
+
+
 function HomeIcon(props) {
   return (
     <SvgIcon {...props}>
@@ -70,11 +72,15 @@ function HomeIcon(props) {
     </SvgIcon>
   );
 }
+
 function App() {
   const classes = useStyles();
-  const searchResult = useSelector(state=>state.searchResults);
   const dispatch =useDispatch();
   let location=useLocation();
+  const navigate =useNavigate();
+  const reDirectToListPage=()=>{
+    navigate('/listpage');
+  }
   
   const getSearchResults=async(value)=>{
     try{
@@ -116,7 +122,7 @@ function App() {
         Movie Details
       </div>
     }
-        <IconButton className={classes.homeIcon}>
+        <IconButton className={classes.homeIcon} onClick={reDirectToListPage}>
           <HomeIcon style={{color:'#4A4A4A'}} />
         </IconButton>
 
